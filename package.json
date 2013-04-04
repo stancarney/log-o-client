@@ -1,0 +1,24 @@
+{
+  "name": "log-o-client",
+  "version": "0.1.0",
+  "author": "Stan Carney &lt;stan.carney&amp;rootsh.me&gt;",
+  "description": "Local tools used to interact with Log-o servers.",
+  "scripts": {
+    "start": "node client.js"
+  },
+  "dependencies": {
+    "moment": "*",
+    "querystring": "*",
+    "prompt": "*",
+    "cliff": "*",
+    "socket.io-client": "*"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "supertest": "*"
+  },
+  "license": "GPLv3",
+  "engine": {
+    "node": ">= 0.8.0"
+  }
+}
