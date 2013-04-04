@@ -7,10 +7,7 @@ var http = require('http')
     , querystring = require('querystring')
     , io = require('socket.io-client');
 
-//TODO:Stan unit test the rest of the app
-//TODO:Stan allow for HTTPS client calls
-
-var ALL_PERMISSIONS = ['USER_ADD', 'USER_LIST', 'USER_EDIT', 'USER_RESET', 'ALERT_ADD', 'ALERT_LIST', 'ALERT_EDIT', 'SEARCH'].sort();
+var ALL_PERMISSIONS = ['USER_ADD', 'USER_LIST', 'USER_EDIT', 'USER_RESET', 'ALERT_ADD', 'ALERT_LIST', 'ALERT_EDIT', 'SEARCH', 'TAIL'].sort();
 
 var PASSWORD_SCHEMA = {
   hidden: true,
@@ -225,7 +222,7 @@ function alertAdd() {
   }, function (err, p) {
 
     if (!p.host && !p.facility && !p.severity && !p.message) {
-      console.log('One of [host|facility|severity|message] required.');
+      util.puts('One of [host|facility|severity|message] required.');
       return;
     }
 
@@ -375,7 +372,7 @@ function tail(args) {
     });
 
     socket.on('error', function (err) {
-      console.log(err);
+      util.error(err);
       process.exit(1);
     });
 
@@ -460,7 +457,7 @@ function request(path, postData, callback) {
       });
     });
     req.on('error', function (e) {
-      console.log('Err ', e);
+      util.error('Err ', e);
     });
     req.write(postData);
     req.end();
