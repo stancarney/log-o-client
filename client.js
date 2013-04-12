@@ -399,8 +399,10 @@ function parseArgs(args) {
 }
 
 function printRecord(r) {
-  if (r['message']) {
+  if (r.message) {
     util.puts('[' + moment(r['time']).format('MMM D YYYY, HH:mm:ss') + ' ' + r['facility'] + ' ' + r['severity'] + ']\t' + r['host'] + '   ' + r['message']);
+  } else if (r.result) {
+    util.puts(r.result);
   } else {
     util.puts(r);
   }
