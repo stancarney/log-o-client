@@ -372,7 +372,7 @@ function tail(args) {
     });
 
     socket.on('error', function (err) {
-      util.error(err.result);
+      printRecord(err);
       process.exit(1);
     });
 
